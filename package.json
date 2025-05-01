@@ -1,0 +1,38 @@
+{
+  "name": "belajar-mustache",
+  "version": "1.0.0",
+  "description": "belajar nodejs mustache",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "keywords": [
+    "k0nf0y12"
+  ],
+  "repository": {
+    "type": "git",
+    "url":""
+  },
+  "author": "Abdul Charis",
+  "license": "ISC",
+  "type": "module",
+
+  "dependencies": {
+    "mustache": "^4.2.0"
+  },
+
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "@types/mustache": "^4.2.0"
+  }
+
+}
+

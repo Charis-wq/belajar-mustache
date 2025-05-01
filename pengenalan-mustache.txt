@@ -1,0 +1,19 @@
+MUSTACHE
+
+Pengenalan Mustache 
+mustache adalah liberary untuk tempalate engine
+dengan menggunkan mustache kita bisa membuat kode template yang nanti isi data bisa kita masukan kedalam template sehingga menghasilakan konten yang kita masukanmustache sangat sederhana oleh karena itu sangat mudah di pelajari 
+mustache sendiri sudah menjadi standard sehingga bisa digunakan di banyak teknologi dan bahas pemograman.
+
+Menggunakan MustacheJS
+untuk menggunakan mustacheJS terdapat function bernama render(template, data) di package mustache kita bisa gunakan untuk merender template dan datanya.
+
+Mustache Cache
+saat kita menggunakan function render() data template akan di cache oleh mustachejs hal ini agar ketika kita melakukan render dengan template yang sama proses akan menjadi lebih cepat 
+biasanya proses render di awal akan sedikit lebih lambat dikarenakan butuh proses kompilasi template terlebih dahulu 
+jika kita ingin mempercepat di awal aplikasi berjalan kita bisa melakukan kompilasi semua template terlebih dahulu dengan cara menggunakan function parse(tempalte).
+
+Tags
+mustache menggunakan kurung kurawal 2kali sebagai tags misal {{name}} 
+tags di gunakan untuk mengirim data dari luar template jika data tidak di kirim maka akan diganti oleh string kosong
+secara default HTML di dalam data tags akan di escape jika kita inging menapilkan data di HTML kita bisa gunakan kurung kurawal 3kali misal {{{kode}}}.
