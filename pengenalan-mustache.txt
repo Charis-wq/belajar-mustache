@@ -17,3 +17,33 @@ Tags
 mustache menggunakan kurung kurawal 2kali sebagai tags misal {{name}} 
 tags di gunakan untuk mengirim data dari luar template jika data tidak di kirim maka akan diganti oleh string kosong
 secara default HTML di dalam data tags akan di escape jika kita inging menapilkan data di HTML kita bisa gunakan kurung kurawal 3kali misal {{{kode}}}.
+
+Nested Object
+mustache tags juga bisa digunakan untuk data nested bahkan array 
+untuk mengaksesnya didalam tags kita bisa gunakan titik (.) misal {{person.name}}.
+
+Mustache File
+mustachejs sendiri sebenarnya tidak memiliki kemampuan untuk membaca template dari file jadi kita perlu membaca template dari file secara manual
+biasanya mustache menggunakan nama file dengan exstiension .mustache
+
+Sections
+mustache adalah template engine yang tidak memiliki logic kompleks
+tetapi terkadang kita ingin menambahkan logic misalnya seperti if else
+di mustache hal ini bisa kita ganti menjadin section 
+section di mustache menggunakan {{#name}} dan di tutuop dengan {{/name}} 
+dimana blok didalam section tidak akan ditampilkan jika variabel di section tidak ada atau ada tapi dengan nilai null,undifined,false,0,NaN,emptiy string atau empty array.
+
+Sections Data 
+saat menggunakan sections kita juga bisa mengakses data yang terdapat di sections secara otomatis tanpa harus menyabutkan sectionnya lagi 
+misalnya pada kasus sebelumnya kita bisa mengakses {{name}} tanpa harus menyebutkan {{person.name}}.
+
+Inverted Sections
+saat menggunakan logika if kadang kita juga ingin menambhakan logika else 
+di mustache kita bisa menggunakan inverted sections dimana blok sections akan dieksekusi jika nila sections adalah null,undifined,fals,falsy,atau empty list
+untuk menggunakan inverted sections kita bisa gunakan {{^name}} dan di tutup dengan {{/name}}. 
+
+List 
+saat membuat template terkadang kita ingin menampilkan data yang bentuknya adalah list atau array 
+mustache juga bisa menggunakan sections untuk menampilkan itu 
+untuk menampilkan tipe data kita bisa menggunakan titik di dalam sectionnya misalkan {{.}}
+ingat sama seperti sections jika datanya tidak ada maka tidak akan menapilkan apapapun.
