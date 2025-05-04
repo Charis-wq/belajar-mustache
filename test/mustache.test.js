@@ -1,6 +1,8 @@
 // File: test/mustache.test.js
 import Mustache from "mustache";
 import fs from "fs/promises"
+import mustache from "mustache";
+import { name } from "mustache";
 
 test ("menggunakan mustache", () => {
     const data = Mustache.render("Hello {{name}}", {name: "Charis"});
@@ -101,4 +103,73 @@ test ("mencoba mustache list", async () => {
     expect(data).toContain("badminton");
     expect(data).toContain("reading");
     expect(data).toContain("coding");
+});
+
+test ("mencoba list object", async () => {
+    const template = await fs.readFile("./templates/student.mustache").then(data => data.toString());
+
+    const data  = Mustache.render(template, {
+        students: [
+            {name: "Abdul", value: 100},
+            {name: "Charis", value: 90}
+        ]
+    });
+
+    console.log(data);
+    expect(data).toContain("Abdul");
+    expect(data).toContain("Charis");
+    expect(data).toContain("100");
+    expect(data).toContain("90"); 
+});
+
+test ("mencoba function ", async () => {
+
+    const parameter = {
+        name: "Charis",
+        upper: () => {
+            return (text, render) =>{
+                return render(text).toUpperCase();
+            }
+        }
+    }
+
+    const data = Mustache.render("Hello {{#upper}}{{name}}{{/upper}}", parameter);
+    expect(data).toBe("Hello CHARIS")
+    
+}); 
+
+test ("mencoba comment", async () => {
+    const template = await fs.readFile("./templates/comment.mustache").then(data => data.toString());
+
+    const data  = Mustache.render(template, {
+        comments: "Hallo ini adalah comment"
+    });
+        
+
+    console.log(data);
+    expect(data).toContain("Hallo ini adalah comment");
+    expect(data).not.toContain(" ini komentar");
+   
+});
+
+test ("mencoba partials", async () => {
+    const contentTemplate = await fs.readFile("./templates/content.mustache").then(data => data.toString());
+
+    const headerTemplate = await fs.readFile("./templates/header.mustache").then(data => data.toString());
+
+    const footerTemplate = await fs.readFile("./templates/footer.mustache").then(data => data.toString());
+
+    const data  = Mustache.render(contentTemplate, {
+        title: "Belajar MustacheJS",
+        content: "Hallo ini adalah content"
+    },{
+        header: headerTemplate,
+        footer: footerTemplate
+    });
+
+    console.log(data);
+    expect(data).toContain("Belajar MustacheJS");
+    expect(data).toContain("Hallo ini adalah content");
+    expect(data).toContain("Abdul Charis");
+
 });

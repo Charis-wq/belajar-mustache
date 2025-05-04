@@ -47,3 +47,24 @@ saat membuat template terkadang kita ingin menampilkan data yang bentuknya adala
 mustache juga bisa menggunakan sections untuk menampilkan itu 
 untuk menampilkan tipe data kita bisa menggunakan titik di dalam sectionnya misalkan {{.}}
 ingat sama seperti sections jika datanya tidak ada maka tidak akan menapilkan apapapun.
+
+List Object
+terkadang kita memiliki data kumpulan object di dalam list atau array
+bidsa juga kita akses menggunakan section caranya mirirp menggunakan section object.
+
+function
+didalam tags selain data kita juga bisa mengakses function 
+caranya cukup mudah kita hanya perlu membuat function yang mengembalikan function dengan parameter text dan render
+parameter render adalah function mustache untuk melakukan render dan sebelum dikembalikan kit bisa memanipulasi hasilnya
+untuk menggunakan function caranya sama dengan menggunakan section cukup gunakan {{#function}} dan di tutup dengan {{/function}}.
+
+Comment
+terkadang kita ingin menambahkan komentar didalam file mustache
+untuk menambahkan komentar kita bisa menggunakan {{! isi komentar}}.
+
+Partials
+saat kita membuat halaman web menggunakan mustache terkadang kita ingin membagi bagaian template menjadi beberapa bagian 
+misal ada bagian header,content dan footer
+untungnya mustache mendukung hal tersebut 
+kita bisa menggunakan perintah {{> nama partial}}
+pada function render terdapat parameter ketika berisikan object partials yang bisa kita gunakan untuk menambahkan data template lainya.
